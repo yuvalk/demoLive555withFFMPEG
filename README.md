@@ -14,6 +14,11 @@ HOW TO COMPILE
 -----------------
 you'll have to modify the Makefile to fit your location of ffmpeg and live555 (and SDL)
 
+HOW TO COMPILE ON WINDOWS
+--------------------------
+you'll have to organize the pre-requesits under ReferenceLib on your own (the names of the directories are all in the .vcxproj file)
+then you can compile with Visual Studio
+
 KNOWN LIMITATIONS:
 -------------------
 This is not a fully working client!

@@ -26,12 +26,16 @@ intended for the soul purpose of DEMONSTRATING how to integrate live555 with ffm
 to decode a live H264 RTSP stream and display it using SDL
 ************************************************************************************/
 
+#ifdef WIN32
+#include <SDKDDKVer.h>
+#endif
+
 #include "liveMedia.hh"
 #include "BasicUsageEnvironment.hh"
 
 // SDL
-#include <SDL/SDL.h>
-#include <SDL/SDL_thread.h>
+#include <SDL.h>
+#include <SDL_thread.h>
 
 // FFMPEG
 extern "C" {
@@ -208,8 +212,8 @@ public:	void setSprop(u_int8_t const* prop, unsigned size);
 
 private: //FFMPEG
 	AVCodec *codec;
-	AVCodecContext *c = NULL;
-	int frame = 0;
+	AVCodecContext *c;
+	int frame;
 	int got_picture;
 	int len;
 	AVFrame *picture;
@@ -790,7 +794,7 @@ void DummySink::afterGettingFrame(unsigned frameSize, unsigned numTruncatedBytes
 				c->width,
 				c->height,
 				PIX_FMT_YUV420P,
-				0,
+				SWS_BICUBIC,
 				NULL,
 				NULL,
 				NULL
