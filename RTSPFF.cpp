@@ -831,6 +831,7 @@ void DummySink::afterGettingFrame(unsigned frameSize, unsigned numTruncatedBytes
 				fname
 			);
 */
+			sws_freeContext(sws);
 			frame ++;
 		} else {
 			envir() << "no picture :( !\n";
